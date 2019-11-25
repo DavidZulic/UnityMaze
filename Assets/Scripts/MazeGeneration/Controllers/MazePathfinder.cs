@@ -11,7 +11,6 @@ public class MazePathfinder
     MonoBehaviour parent;
 
     bool isComplete = false;
-    bool isSuccesful = false;
     
     float startTime = 0;
     int iterations = 0;

@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class TileView : MonoBehaviour
 {
-    [SerializeField] Transform tileFloor;
-    [SerializeField] Transform[] tileWalls;
-    [SerializeField] Transform[] tileColumns;
+    [SerializeField] Transform[] tileWalls = null;
+    [SerializeField] Transform[] tileColumns = null;
 
-    [SerializeField] Renderer tileFloorRenderer;
-    [SerializeField] Renderer[] tileWallRenderers;
-    [SerializeField] Renderer[] tileColumnRenderers;
+    [SerializeField] Renderer tileFloorRenderer = null;
 
     public void SetFloorColor(Color color)
     {

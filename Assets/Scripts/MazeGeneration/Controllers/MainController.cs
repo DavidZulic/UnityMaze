@@ -22,8 +22,8 @@ public class MainController : MonoBehaviour
 
     //Settings
     [SerializeField, Range(0, 11)] int mainRoomSize = 3;
-    [SerializeField] GameObject tilePrefab;
-    [SerializeField] Transform mazeRoot;
+    [SerializeField] GameObject tilePrefab = null;
+    [SerializeField] Transform mazeRoot = null;
 
     void Awake()
     {
