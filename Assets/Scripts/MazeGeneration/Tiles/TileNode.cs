@@ -47,9 +47,4 @@ public class TileNode : IComparable<TileNode>
     {
         previousNode = null;
     }
-
-    public void SetFloorColor(Color color)
-    {
-        controller.SetFloorColor(color);
-    }
 }

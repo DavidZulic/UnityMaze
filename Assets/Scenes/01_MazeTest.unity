@@ -284,11 +284,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugLevel: 0
-  blankColor: {r: 1, g: 1, b: 1, a: 1}
-  startColor: {r: 0, g: 1, b: 0, a: 1}
-  goalColor: {r: 1, g: 0, b: 0, a: 1}
-  exploredColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pathColor: {r: 0, g: 1, b: 1, a: 1}
+  blankMat: {fileID: 2100000, guid: 86f571f600f75ec469f13903dbb5dfc7, type: 2}
+  startMat: {fileID: 2100000, guid: f0eb7c26f33aac14e8d18e149702332e, type: 2}
+  goalMat: {fileID: 2100000, guid: 8d2fe5390c895df499c3f38b0f046a5d, type: 2}
+  stepMat: {fileID: 2100000, guid: 605ee0a22df4bde449955666f77b464b, type: 2}
+  pathMat: {fileID: 2100000, guid: 0e0c28e06daa106428d212245c8b0154, type: 2}
 --- !u!1 &1485464304
 GameObject:
   m_ObjectHideFlags: 0

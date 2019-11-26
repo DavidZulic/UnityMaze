@@ -6,20 +6,22 @@ public class TileView : MonoBehaviour
 {
     [SerializeField] Transform[] tileWalls = null;
     [SerializeField] Transform[] tileColumns = null;
-
     [SerializeField] Renderer tileFloorRenderer = null;
 
-    public void SetFloorColor(Color color)
+    public void SetFloorMaterial(Material mat)
     {
-        if (tileFloorRenderer != null)
+        if (mat == null)
         {
-            tileFloorRenderer.material.color = color;
+            Debug.LogError("Tile floor material not defined");
+            return;
         }
-        else
+        if (tileFloorRenderer == null)
         {
             Debug.LogError("Tile floor renderer not defined");
             return;
         }
+
+        tileFloorRenderer.material = mat;
     }
 
     public void UpdateWalls(bool[] wallsEnabled)

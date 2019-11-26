@@ -143,10 +143,5 @@ public bool visited;
             tileView.UpdateColumns(columnsEnabled);
         }
     }
-
-    public void SetFloorColor(Color color)
-    {
-        tileView.SetFloorColor(color);
-    }
 }
 

@@ -10,66 +10,66 @@ public class GraphView : MonoBehaviour
     [Header("Debug")]
     [SerializeField] PathDebugLevel debugLevel = PathDebugLevel.PathOnly;
     [Space(10)]
-    [SerializeField] Color blankColor = Color.white;
-    [SerializeField] Color startColor = Color.green;
-    [SerializeField] Color goalColor = Color.red;
-    [SerializeField] Color exploredColor = new Color(0.8f, 0.8f, 0.8f);
-    [SerializeField] Color pathColor = Color.cyan;
+    [SerializeField] Material blankMat;
+    [SerializeField] Material startMat;
+    [SerializeField] Material goalMat;
+    [SerializeField] Material stepMat;
+    [SerializeField] Material pathMat;
     
     Coroutine drawCoroutine;
 
-    public void ClearNodes(ref List<TileNode> nodes)
+    public void ClearNodes(List<TileNode> nodes)
     {
         if (drawCoroutine != null)
             StopCoroutine(drawCoroutine);
 
-        ColorNodesList(ref nodes, blankColor);
+        ColorNodesList(nodes, blankMat);
     }
 
     public void ColorStartNode(TileNode node)
     {
-        node.SetFloorColor(startColor);
+        ColorNode(node, startMat);
     }
 
     public void ColorGoalNode(TileNode node)
     {
-        node.SetFloorColor(goalColor);
+        ColorNode(node, goalMat);
     }
 
-    public void ColorPathNodes(ref List<TileNode> nodes)
+    public void ColorPathNodes(List<TileNode> nodes)
     {
-        ColorNodesList(ref nodes, pathColor);
+        ColorNodesList(nodes, pathMat);
     }
 
     public void ColorExploredNode(TileNode node)
     {
-        node.SetFloorColor(exploredColor);
+        ColorNode(node, stepMat);
     }
 
-    public void ColorExploredNodes(ref List<TileNode> nodes)
+    public void ColorExploredNodes(List<TileNode> nodes)
     {
-        ColorNodesList(ref nodes, exploredColor);
+        ColorNodesList(nodes, stepMat);
     }
 
-    /// <summary>
-    /// Set each TileNode in nodes List floor color to color
-    /// </summary>
-    /// <param name="nodes">TileNodes list</param>
-    /// <param name="color">TileNode floor color</param>
-    public void ColorNodesList(ref List<TileNode> nodes, Color color)
+    public void ColorNodesList(List<TileNode> nodes, Material mat)
     {
         foreach (TileNode t in nodes)
-            t.SetFloorColor(color);
+            t.controller.tileView.SetFloorMaterial(mat);
     }
 
-    public void DrawPath(ref List<TileNode> path, ref List<TileNode> steps, TileNode start, TileNode goal)
+    public void ColorNode(TileNode node, Material mat)
+    {
+        node.controller.tileView.SetFloorMaterial(mat);
+    }
+
+    public void DrawPath(List<TileNode> path, List<TileNode> steps, TileNode start, TileNode goal)
     {
         if (drawCoroutine != null)
             StopCoroutine(drawCoroutine);
 
         if (debugLevel == PathDebugLevel.PathOnly)
         {
-            ColorPathNodes(ref path);
+            ColorPathNodes(path);
             ColorStartNode(start);
             ColorGoalNode(goal);
         }
@@ -89,8 +89,8 @@ public class GraphView : MonoBehaviour
             ColorExploredNode(t);
             yield return null;
         }
-        ColorPathNodes(ref path);
 
+        ColorPathNodes(path);
         ColorStartNode(start);
         ColorGoalNode(goal);
         yield return null;

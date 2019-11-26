@@ -75,7 +75,7 @@ public class MainController : MonoBehaviour
         mazeGenerator.UpdateMeshes();
 
         mazeGraph.Refresh(mazeGenerator.tiles);
-        graphView.ClearNodes(ref mazeGraph.mazeNodesList);
+        graphView.ClearNodes(mazeGraph.mazeNodesList);
 
         mazeGenerated = true;
 
@@ -86,8 +86,8 @@ public class MainController : MonoBehaviour
     {
         if (!mazeGenerated)
             GenerateMaze();
-
-        graphView.ClearNodes(ref mazeGraph.mazeNodesList);
+       
+        graphView.ClearNodes(mazeGraph.mazeNodesList);
         mazeGraph.startNode = mazeGenerator.tiles[4, 4].tileNode;
         mazeGraph.goalNode = mazeGenerator.tiles[MAZE_WIDTH - 4, MAZE_LENGTH - 4].tileNode;
 
@@ -101,7 +101,7 @@ public class MainController : MonoBehaviour
         if (!success)
             return;
 
-        graphView.ClearNodes(ref mazeGraph.mazeNodesList);
-        graphView.DrawPath(ref mazeGraph.pathNodes, ref mazeGraph.exploredNodes, mazeGraph.startNode, mazeGraph.goalNode);
+        graphView.ClearNodes(mazeGraph.mazeNodesList);
+        graphView.DrawPath(mazeGraph.pathNodes, mazeGraph.exploredNodes, mazeGraph.startNode, mazeGraph.goalNode);
     }
 }

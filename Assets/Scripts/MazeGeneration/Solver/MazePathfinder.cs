@@ -26,8 +26,8 @@ public class MazePathfinder
 
         mazeGraph.exploredNodes = new List<TileNode>();
         mazeGraph.pathNodes = new List<TileNode>();
-
         mazeGraph.frontierNodes = new PriorityQueue<TileNode>();
+
         mazeGraph.frontierNodes.Enqueue(mazeGraph.startNode);
 
         foreach (TileNode t in mazeGraph.mazeNodesList)
